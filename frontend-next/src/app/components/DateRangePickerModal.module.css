@@ -1,0 +1,262 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 9999; /* Increased z-index to ensure it's on top of everything */
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+  pointer-events: none;
+  height: 100vh; /* Ensure full viewport height */
+  width: 100vw; /* Ensure full viewport width */
+  display: flex; /* Use flexbox to position content */
+  align-items: flex-end; /* Align content to the bottom */
+  justify-content: center; /* Center content horizontally */
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 33px 33px 0 0;
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transform: translateY(100%); /* Initial position off-screen at the bottom */
+  opacity: 0; /* Initial hidden state for animation */
+  transform-origin: bottom center; /* Defines the origin point for the transform animation */
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Smooth transition for both properties */
+  position: relative; /* Change to relative, as flexbox handles positioning */
+  top: auto; 
+  bottom: 0; 
+  left: auto;
+  right: auto;
+  margin: 0; /* Remove auto margins, flexbox handles centering */
+  height: auto; /* Allow height to adjust to content */
+  max-height: 90vh; /* Max height to prevent overflow */
+  overflow-y: auto; /* Изменено на auto для включения прокрутки */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.modal-overlay.open .modal-content {
+  opacity: 1; /* Fully visible when open */
+  transform: translateY(0); /* Slide up to its original position */
+}
+
+.modal-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffffff; /* Белый фон как на фото */
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #000; /* Черный цвет символа */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  transition: background 0.2s;
+}
+
+.close-button:hover {
+  background: #e0e0e0;
+}
+
+.search-section {
+  margin-bottom: 15px;
+}
+
+.calendar {
+  background: #fff;
+  border-radius: 12px;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+}
+
+.calendar-header h4 {
+  font-family: "Manrope", sans-serif;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #222 !important;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 12px;
+}
+
+.weekdays span {
+  color: #888;
+  font-weight: 500;
+  padding: 8px 0;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+
+.days-grid .day {
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1; /* Makes the day circles perfectly round */
+}
+
+.days-grid .day.empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.days-grid .day.past-day {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.days-grid .day:hover:not(.past-day) {
+  background: #e0e0e0;
+}
+
+.days-grid .day.selected {
+  background: #000;
+  color: #fff;
+}
+
+.days-grid .day.today {
+  border: 1px solid #000; /* Outline for today */
+}
+
+.days-grid .day.start-date,
+.days-grid .day.end-date {
+  background: #000;
+  color: #fff;
+  border-radius: 50%; /* Ensure start and end dates are round */
+}
+
+.days-grid .day.in-range {
+  background: #f0f0f0;
+  border-radius: 0; /* No radius for days in range */
+}
+
+/* Ensure the start and end of the range have rounded corners */
+.days-grid .day.in-range.start-date {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.days-grid .day.in-range.end-date {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+/* Special case for single day selection */
+.days-grid .day.start-date.end-date {
+  border-radius: 50%; /* Make it perfectly round */
+}
+
+/* Reset button specific styles */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+}
+
+.reset-button {
+  background: none;
+  border: none;
+  color: #222;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  font-family: "Manrope", sans-serif;
+}
+
+.reset-button:hover {
+  background: #f0f0f0;
+}
+
+.reset-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Next/Apply button specific styles */
+.next-button {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: "Manrope", sans-serif;
+}
+
+.next-button:hover {
+  background: #000;
+}
+
+.next-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 

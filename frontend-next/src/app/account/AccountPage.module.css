@@ -1,0 +1,283 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.profileInfo {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profileImageContainer {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.profileImage {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.verifiedBadge {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(40px);
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.infoItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.infoItem:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: 500;
+    color: #666;
+}
+
+.value {
+    color: #333;
+}
+
+.bookings {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bookings h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.bookingList {
+    list-style: none;
+    padding: 0;
+}
+
+.bookingItem {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #e9ecef;
+}
+
+.bookingItem p {
+    margin: 5px 0;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.editButton {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.editButton:hover {
+    background: #0056b3;
+}
+
+.errorContainer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+.errorContainer h2 {
+    color: #dc3545;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.instructions {
+    text-align: left;
+    margin: 20px auto;
+    padding: 0;
+    max-width: 300px;
+}
+
+.instructions li {
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.instructions li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #007bff;
+}
+
+.retryButton {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.retryButton:hover {
+    background: #218838;
+}
+
+.loadingContainer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+.loadingSpinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.mainContent {
+    padding-bottom: 60px; /* Для BottomMenu */
+}
+
+.pageTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.profileCard {
+    background: #fff;
+    border-radius: 28px;
+    padding: 32px 20px 24px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.086);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileImageCircle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #B48A2C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.profileImage {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.verifiedBadge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: #E6007A;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    border: 3px solid #fff;
+}
+
+.userName {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 10px 0 4px 0;
+    text-align: center;
+}
+
+.userLocation {
+    color: #888;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.otherDetails {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.otherDetails p {
+    margin: 8px 0;
+}
+
+.bookingsTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0 15px;
+    color: #333;
+} 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Telegram Web App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
+  <style>
+    body { font-family: sans-serif; padding: 2em; background: #f6f6f6; }
+    h1 { font-size: 24px; }
+    pre { background: #fff; padding: 1em; border-radius: 10px; }
+    img { max-width: 80px; border-radius: 50%; margin-bottom: 1em; }
+  </style>
+</head>
+<body>
+  <h1>Telegram Web App User</h1>
+  <div id="user-block">
+    <p>Загрузка...</p>
+  </div>
+  <pre id="debug"></pre>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+
+    const user = tg.initDataUnsafe.user;
+    const initData = tg.initData;
+
+    const block = document.getElementById("user-block");
+    const debug = document.getElementById("debug");
+
+    if (user) {
+      block.innerHTML = `
+        <img src="${user.photo_url || "https://t.me/i/userpic/320/null.jpg"}" alt="avatar" />
+        <div><strong>${user.first_name || ""} ${user.last_name || ""}</strong></div>
+        <div>@${user.username || "—"}</div>
+        <div>ID: ${user.id}</div>
+        <div>Lang: ${user.language_code}</div>
+        <div>Premium: ${user.is_premium ? "✅" : "❌"}</div>
+      `;
+    } else {
+      block.innerHTML = "<p>Нет данных о пользователе. Вероятно, вы открыли Web App не в Telegram.</p>";
+    }
+
+    debug.textContent = JSON.stringify({
+      initData,
+      user
+    }, null, 2);
+  </script>
+</body>
+</html>

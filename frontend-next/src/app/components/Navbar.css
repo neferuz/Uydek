@@ -1,0 +1,183 @@
+/* Navbar.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+/* --- Переменные --- */
+:root {
+  --nav-text-primary: #000000;
+  --nav-text-secondary: #717171;
+  --nav-background: #ffffff;
+  --nav-border-color: #ebebeb;
+  --font-family: 'Manrope', sans-serif;
+}
+
+/* --- Основной контейнер Navbar --- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: var(--nav-background);
+  padding-top: 16px;
+  box-shadow: 0 1px 0 var(--nav-border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: var(--font-family);
+}
+
+/* --- Поисковая строка --- */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 999px;
+  border: 1px solid #dddddd;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 17px 17px 17px 20px;
+  margin: 0 auto;
+  max-width: 450px;
+  width: auto;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.search-bar:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+}
+
+.search-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.placeholder {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--nav-text-primary);
+}
+
+.placeholder-light {
+  color: var(--nav-text-secondary);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.filter-button {
+  margin-left: 12px;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-button img {
+  width: 14px;
+  height: 14px;
+}
+
+/* --- ИЗМЕНЕННЫЕ СТИЛИ ДЛЯ МЕНЮ КАТЕГОРИЙ --- */
+.categories-container {
+  display: flex;
+  /* Остается flex */
+  width: 100%;
+  border-bottom: 1px solid var(--nav-border-color);
+  /* Нижняя граница для всего блока */
+  /* Убрана прокрутка и боковые отступы */
+}
+
+.category-item {
+  /* Основное изменение: заставляем каждый элемент занять равное пространство */
+  flex: 1;
+
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  display: flex;
+  justify-content: center;
+  /* Центрируем контент по горизонтали */
+  align-items: center;
+  /* и вертикали */
+  color: var(--nav-text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* Эта обертка нужна для правильного позиционирования подчеркивания */
+.category-item-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0 18px;
+  padding-bottom: 12px;
+  cursor: pointer;
+}
+
+.category-item:hover {
+  color: var(--nav-text-primary);
+}
+
+.category-item:hover .category-icon {
+  filter: grayscale(0%);
+}
+
+.category-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.category-label {
+  font-size: 14px;
+  /* Немного увеличил для лучшей читаемости */
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.category-item.is-active {
+  color: var(--nav-text-primary);
+  font-weight: 700;
+}
+
+.category-item.is-active .category-icon {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.active-indicator {
+  position: absolute;
+  bottom: -1px;
+  /* Перекрывает общую нижнюю границу */
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--nav-text-primary);
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 768px) {
+  .navbar {
+    padding-top: 15px;
+  }
+
+  .search-bar {
+    max-width: 95%;
+    width: 95%;
+  }
+}

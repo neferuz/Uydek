@@ -1,0 +1,378 @@
+.booking-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Align to bottom, then translate up */
+    z-index: 1000;
+  }
+
+  .booking-modal-content {
+    background-color: white;
+    width: 100%;
+    max-width: 500px; /* Adjust as needed */
+    border-radius: 30px 30px 0 0; /* Изменяем радиус скругления на 30px */
+    padding: 0; /* Убираем padding, он будет на внутреннем scrollable-content */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(0); /* Initial position */
+    transition: transform 0.3s ease-out; /* Smooth slide-up effect */
+    max-height: 95vh; /* Увеличиваем лимит высоты для предотвращения переполнения */
+    /* overflow-y: auto; */ /* Удаляем overflow-y, он будет на modal-scrollable-content */
+    display: flex; /* Используем flexbox */
+    flex-direction: column; /* Элементы выстраиваются в колонку */
+  }
+
+  .modal-header {
+    position: sticky; /* Делаем шапку фиксированной */
+    top: 0; /* Фиксируем сверху */
+    z-index: 10; /* Устанавливаем z-index, чтобы шапка была поверх контента */
+    background-color: white; /* Фон шапки, чтобы скрыть скроллируемый контент */
+    width: 100%; /* Шапка на всю ширину */
+    display: flex;
+    justify-content: center; /* Центрируем заголовок */
+    align-items: center;
+    padding: 20px 0; /* Устанавливаем padding-top и padding-bottom */
+    border-bottom: 1px solid #eee; /* Separator */
+    margin-bottom: 0px; /* Устанавливаем margin-bottom в 0 */
+    border-top-left-radius: 30px; /* Добавляем радиус для левого верхнего угла */
+    border-top-right-radius: 30px; /* Добавляем радиус для правого верхнего угла */
+  }
+
+  .modal-header h3 {
+    font-size: 18px;
+    font-weight: 600; /* Bolder as per screenshot */
+    margin: 0;
+  }
+
+  .close-button {
+    position: absolute;
+    right: 20px; /* Сдвигаем кнопку закрытия чуть левее */
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    padding: 0;
+  }
+
+  .apartment-summary-card {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  .apartment-summary-image {
+    width: 100px; /* Square image */
+    height: 100px;
+    border-radius: 20px; /* Изменяем радиус скругления на 20px */
+    object-fit: cover;
+    flex-shrink: 0; /* Prevent shrinking */
+  }
+
+  .apartment-summary-details {
+    flex-grow: 1;
+  }
+
+  .apartment-summary-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    color: #333;
+  }
+
+  .trip-details-section, .payment-method-section, .price-info-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .trip-details-section h4, .payment-method-section h4, .price-info-section h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .trip-details-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .trip-details-item p {
+    margin: 0;
+    font-size: 15px;
+    color: #555;
+  }
+
+  .change-button {
+    background: none;
+    border: none;
+    color: #007bff; /* Airbnb-like blue */
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    font-size: 15px;
+    text-decoration: underline;
+  }
+
+  .total-price-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .total-price-section h4 {
+    margin: 0; /* Override margin from general h4 rule */
+  }
+
+  .total-price-section p {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+  }
+
+  .details-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    font-size: 15px;
+    text-decoration: underline;
+  }
+
+  .cancellation-policy {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .cancellation-policy p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+
+  .change-rules-link {
+    color: #007bff;
+    text-decoration: underline;
+    font-size: 14px;
+  }
+
+  .guest-controls-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between adult and children controls */
+  }
+
+  .guest-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .control-button {
+    background-color: #ffffff; /* Белый фон */
+    border: 1px solid #ddd; /* Более темная серая граница */
+    border-radius: 10px; /* Уголки 10px */
+    width: 34px; /* Увеличиваем размер */
+    height: 34px; /* Увеличиваем размер */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px; /* Увеличиваем размер шрифта */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: #333; /* Цвет символов */
+  }
+
+  .control-button:hover {
+    background-color: #e0e0e0;
+  }
+
+  .control-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .guest-controls span {
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  .payment-method-section {
+    margin-bottom: 10px; /* Уменьшаем отступ снизу */
+    padding-bottom: 0px; /* Убираем padding снизу */
+    border-bottom: 1px solid #eee;
+  }
+
+  .payment-card-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #eee; /* Light border below */
+    margin-bottom: 15px;
+  }
+
+  .payment-card-display span {
+    font-size: 15px;
+    color: #333;
+  }
+
+  .arrow-icon {
+    font-size: 18px;
+    color: #777;
+  }
+
+  .payment-methods-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0px; /* Убираем промежутки между элементами, так как линии будут их разделять */
+    margin-top: 15px; /* Отступ от "Оплата по карте любыми способами" */
+  }
+
+  .payment-method-item {
+    padding: 10px 0; /* Отступы для каждого элемента */
+    border-bottom: 1px solid #eee; /* Разделительная линия */
+    font-size: 15px;
+    color: #555;
+  }
+
+  .payment-method-item:last-child {
+    border-bottom: none; /* Убираем линию после последнего элемента */
+    padding-bottom: 0; /* Убираем нижний отступ у последнего элемента */
+  }
+
+  .price-info-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .price-info-section h4 {
+    margin: 0; /* Override margin from general h4 rule */
+  }
+
+  .price-breakdown-item, .total-usd-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .price-breakdown-item p, .total-usd-item p {
+    margin: 0;
+    font-size: 15px;
+    color: #555;
+  }
+
+  .price-breakdown-item span, .total-usd-item span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .total-usd-item {
+    font-weight: 600;
+    border-top: 1px solid #eee; /* Separator */
+    padding-top: 15px;
+    margin-top: 15px;
+    font-size: 16px;
+  }
+
+  .total-sum-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Выравниваем элементы по центру вертикально */
+    margin-top: 8px; /* Space between USD and SUM totals */
+    font-size: 15px;
+    color: #555;
+    font-weight: 600;
+  }
+
+  .total-sum-item span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .booking-summary {
+    /* padding-top: 80px; */ /* Удаляем этот padding-top, так как он теперь на родительском элементе */
+    /* margin-top: 60px; */ /* Удаляем этот margin-top */
+  }
+
+  .guest-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adjust this value as needed for desired vertical spacing */
+  }
+
+  .modal-scrollable-content {
+    flex-grow: 1; /* Занимает все доступное пространство */
+    overflow-y: auto; /* Делает этот контейнер прокручиваемым */
+    padding: 20px; /* Добавляем внутренний padding для контента */
+  }
+
+  .confirm-button-container {
+    position: sticky; /* Делаем нижний колонтитул фиксированным */
+    bottom: 0; /* Фиксируем снизу */
+    z-index: 10; /* Устанавливаем z-index */
+    background-color: white; /* Фон нижнего колонтитула */
+    width: 100%; /* На всю ширину */
+    text-align: center;
+    padding: 20px; /* Добавляем padding со всех сторон для отступа кнопки */
+  }
+
+  .confirm-pay-button {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #e60023; /* Red button color from screenshot */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Изменяем радиус скругления на 12px */
+    font-size: 16px;
+    font-weight: 400; /* Изменяем font-weight на 400 */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .confirm-pay-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+  .terms-text {
+    font-size: 12px;
+    color: #777;
+    margin-top: 10px;
+  }
+
+  .terms-text a {
+    color: #007bff;
+    text-decoration: underline;
+  }
+
+  .confirmation-message {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+  }
+
+  .children-text {
+  } 

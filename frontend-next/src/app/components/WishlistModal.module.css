@@ -1,0 +1,32 @@
+.wishlist-modal-overlay {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.wishlist-modal-content {
+  background: #fff;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 100vw;
+  max-width: 500px;
+  padding: 32px 20px 36px 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  animation: slideInUp 0.35s cubic-bezier(.23,1.02,.32,1) both;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+} 
